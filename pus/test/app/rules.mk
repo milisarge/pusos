@@ -1,0 +1,10 @@
+LOCAL_DIR := $(GET_LOCAL_DIR)
+
+#MODULE_DEFINES += LFS_YES_TRACE
+#MODULE_DEFINES += LFS_NO_ASSERT
+
+MODULE := $(LOCAL_DIR)
+
+MODULE_SRCS += $(LOCAL_DIR)/fibon.c
+
+include make/module.mk

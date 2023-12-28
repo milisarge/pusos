@@ -1,0 +1,20 @@
+// Raft core RPC messages
+
+syntax = "proto3";
+
+message AppendEntriesRequest {
+    string id = 1;              // The uuid of the Raft node sending the request.(leader)
+    int32 term = 2;             // The term from the requester's perspective.
+    int32 prevLogIndex = 3;     // Index of entry immediately preceding new ones.
+    int32 prevLogTerm = 4;      // The term of the prevLogIndex entry.
+    repeated string entries = 5; // New ops to append.
+    int32 leaderCommit = 6;     // The leader’s commitIndex. - what index have been received by the majority
+}
+
+message AppendEntriesReply {
+    string id = 1;     // The uuid of the Raft node sending the reply.
+    int32 term = 2;    // The term from the respondent's perspective.
+    bool success = 3;  // True if consensus
+    int32 conflictIndex = 4; // if declined, specifying the conflicting index
+    int32 conflictTerm = 5; // if declined, specifying the conflicting term
+}

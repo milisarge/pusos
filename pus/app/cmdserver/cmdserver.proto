@@ -1,0 +1,14 @@
+// cmdserver RPC messages
+
+syntax = "proto3";
+
+message CmdRequest {
+    int32 id = 1;             // request id
+    string fn = 2;              // function name
+    string data = 3;
+}
+
+message CmdResponse {
+    int32 id = 1; 
+    string data = 2;
+}

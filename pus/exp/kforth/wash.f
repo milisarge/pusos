@@ -1,0 +1,12 @@
+: wait time + do dup time > while drop ;
+: toggle dup get 0 = if 1 store elif 0 store endif ;
+: PIN1_temp 0 ;
+: PIN1_temp_time 0 ;
+: PIN1 time PIN1_temp_time - 2 >= if & PIN1_temp_time time store & PIN1_temp toggle endif PIN1_temp ;
+: wait_for_high do PIN1 0 = while ;
+: wait_for_low do PIN1 1 = while ;
+: wait_test PIN1 0 = if wait_for_high elif wait_for_low endif ;
+: OPEN_FAUCET "Opening Faucets..." wait_test "opened" cr ;
+: WAIT_FILL "Filling..." wait_test "filled" cr ;
+: RUN_IT "Running..." wait_test "done" cr ;
+: WASH OPEN_FAUCET WAIT_FILL RUN_IT ;

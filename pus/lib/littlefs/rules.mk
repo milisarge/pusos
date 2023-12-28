@@ -1,0 +1,12 @@
+LOCAL_DIR := $(GET_LOCAL_DIR)
+
+#MODULE_DEFINES += LFS_YES_TRACE
+#MODULE_DEFINES += LFS_NO_ASSERT
+
+MODULE := $(LOCAL_DIR)
+
+MODULE_SRCS += $(LOCAL_DIR)/lfs.c
+MODULE_SRCS += $(LOCAL_DIR)/lfs_util.c
+MODULE_SRCS += $(LOCAL_DIR)/littlefs.c
+
+include make/module.mk
