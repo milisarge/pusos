@@ -32,8 +32,8 @@ make pus
 sudo scripts/setup_network.py $node_count
 
 # 4- Start Cluster
-scripts/start_cluster.sh
+scripts/start_cluster.sh $node_count
 
-# 5- Start Tests
-scripts/start_tests.py
+# 5- Start [Pusctl](https://github.com/milisarge/pusctl)
+./pusctl
 ```
