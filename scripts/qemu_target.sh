@@ -2,9 +2,9 @@
 #mac=`printf '00:60:2F:%02X:%02X:%02X\n' $[RANDOM%256] $[RANDOM%256] $[RANDOM%256]`
 mac="00:60:2F:11:22:61"
 qemu-system-riscv64 -machine virt \
--netdev tap,id=vmnic,ifname=tp11,script=no -device virtio-net-device,netdev=vmnic,mac=$mac \
+-netdev tap,id=vmnic,ifname=tp10,script=no -device virtio-net-device,netdev=vmnic,mac=$mac \
 -cpu rv64 -m 60 -bios none  \
--drive if=none,file=../blk11.bin,id=blk,format=qcow2 -device virtio-blk-device,drive=blk \
+-drive if=none,file=../blk10.bin,id=blk,format=qcow2 -device virtio-blk-device,drive=blk \
 -incoming tcp:0:4511 \
 -qmp tcp:192.168.122.1:4411,server,nowait
 

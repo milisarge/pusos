@@ -4,9 +4,12 @@ mac="00:60:2F:11:22:33"
 qemu-system-riscv64 -machine virt \
 -netdev tap,id=vmnic,ifname=tp1,script=no -device virtio-net-device,netdev=vmnic,mac=$mac \
 -cpu rv64 -m 60 -bios none  \
--drive if=none,file=../qblk.bin,id=blk,format=qcow2 -device virtio-blk-device,drive=blk \
+-drive if=none,file=../qblk.bin,id=blk0,format=qcow2,node-name=blk -device virtio-blk-device,drive=blk \
 -qmp tcp:192.168.122.1:4444,server,nowait \
 -kernel $1
+
+#
+
 
 #-drive if=none,file=qblk.bin.old,id=blk2,format=qcow2 -device virtio-blk-device,drive=blk2
 #-qmp tcp:192.168.122.1:4444,server,nowait  \
